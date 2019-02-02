@@ -13,7 +13,13 @@ npm install react-js-live
 ```
 
 ```jsx
-<JSLive snippets={snippets} mode="js" />
+import React from "react";
+import JSLive from "react-js-live";
+import "react-js-live/build/main.css";
+
+function App() {
+  return <JSLive snippets={snippets} mode="js" />;
+}
 ```
 
 ### Props:

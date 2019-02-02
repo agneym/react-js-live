@@ -1,0 +1,59 @@
+/* add css styles here (optional) */
+
+.aTBJIYtYv0CFiy6D-tPDk {
+  display: inline-block;
+  margin: 2em auto;
+  border: 2px solid #000;
+  font-size: 2em;
+}
+
+.WzsBpzaJn44HmlR5KnpGd {
+  height: 100%;
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.4);
+}
+
+._3BFkO_0KOF74msuivp6hFn {
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #ffffff;
+  border-bottom: 0.1rem solid rgba(41, 50, 103, 0.1);
+}
+
+._2Ct7if_-NZtFsnpGkq6hHr {
+  margin: 0 1rem;
+  text-transform: uppercase;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  min-width: 3rem;
+}
+
+._2Ct7if_-NZtFsnpGkq6hHr:focus {
+  border: 0.05rem solid #272a2b;
+  outline: none;
+}
+
+.jJ8aYMY_oI2NpPCm3wsF- {
+  border: 0.05rem solid #000000;
+}
+
+._2IUqDjxtpSUGhnwoF4aacI {
+  display: flex;
+  width: 100%;
+  height: calc(100% - 3rem);
+}
+
+._2IUqDjxtpSUGhnwoF4aacI > div {
+  flex: 1;
+  min-height: 200px;
+}
+
+._1MxsTWUzoek09ZMgXoU3ve {
+  height: 100%;
+  font-size: medium;
+  background-color: #000000;
+}
+
+/*# sourceMappingURL=main.css.map*/

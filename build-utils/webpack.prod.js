@@ -7,18 +7,30 @@ const commonPaths = require("./common-paths");
 module.exports = {
   devtool: "source-map",
   mode: "production",
+  externals: {
+    react: "react",
+    "react-dom": "react-dom"
+  },
+  node: {
+    dgram: "empty",
+    fs: "empty",
+    net: "empty",
+    tls: "empty",
+    child_process: "empty"
+  },
   module: {
     rules: [
       {
         test: /\.css$/,
         use: [
+          MiniCssExtractPlugin.loader,
           {
             loader: "css-loader",
             options: {
-              modules: true,
+              modules: true
             }
-          },
-        ],
+          }
+        ]
       },
       {
         test: /\.jsx?$/,
@@ -40,6 +52,6 @@ module.exports = {
     new webpack.EnvironmentPlugin({
       NODE_ENV: "production",
       DEBUG: false
-    }),
+    })
   ]
 };
