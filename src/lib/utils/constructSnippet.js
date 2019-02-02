@@ -23,7 +23,7 @@ function constructSnippet({ html, css, js }) {
       <script>
         var _privateLog = console.log;
         console.log = function(...rest) {
-          if(window) {
+          if(typeof window !== 'undefined') {
             window.parent.postMessage({
               source: "iframe",
               message: rest,

@@ -8,7 +8,7 @@ class Result extends Component {
     logs: [],
   }
   componentDidMount() {
-    if(window) {
+    if(typeof window !== "undefined") {
       window.addEventListener("message", (data) => {
         if (data.data.source === "iframe") {
           this.setState(prevState => ({
