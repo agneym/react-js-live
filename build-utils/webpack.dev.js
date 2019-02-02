@@ -1,5 +1,6 @@
 const config = {
   devtool: "eval-source-map",
+  mode: "development",
   module: {
     rules: [
       {
