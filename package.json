@@ -13,6 +13,11 @@
     "react",
     "js-playground"
   ],
+  "files": [
+    "build",
+    "src/lib",
+    "README.md"
+  ],
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
