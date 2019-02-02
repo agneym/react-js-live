@@ -43,6 +43,7 @@
   display: flex;
   width: 100%;
   height: calc(100% - 3rem);
+  overflow-y: auto;
 }
 
 .showArea > div {
@@ -54,4 +55,14 @@
   height: 100%;
   font-size: medium;
   background-color: #000000;
+  padding: 1rem 0;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.consoleArea li {
+  color: white !important;
+  font-size: 1.4rem !important;
+  margin: 1rem;
+  background-color: inherit !important;
 }
