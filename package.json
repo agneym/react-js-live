@@ -2,7 +2,7 @@
   "name": "re-js-live",
   "version": "1.0.0",
   "description": "JS Playground",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
     "build": "webpack-cli --env=prod",
     "start": "webpack-cli --env=dev",

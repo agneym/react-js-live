@@ -2,8 +2,9 @@ const commonPaths = require("./common-paths");
 const webpack = require("webpack");
 
 const config = {
+  entry: commonPaths.appSrc,
   output: {
-    filename: "[hash].bundle.js",
+    filename: "index.js",
     path: commonPaths.outputPath,
     publicPath: "/"
   },
