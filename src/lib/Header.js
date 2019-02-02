@@ -64,9 +64,14 @@ class Header extends React.Component {
   }
 }
 
+Header.defaultProps = {
+  activeCode: "js",
+  activeRes: "console"
+};
+
 Header.propTypes = {
-  activeCode: PropTypes.oneOf(["html", "css", "js"]).isRequired,
-  activeRes: PropTypes.oneOf(["result", "console"]).isRequired,
+  activeCode: PropTypes.oneOf(["html", "css", "js"]),
+  activeRes: PropTypes.oneOf(["result", "console"]),
   onChange: PropTypes.func.isRequired
 };
 
