@@ -1,0 +1,57 @@
+/* add css styles here (optional) */
+
+.test {
+  display: inline-block;
+  margin: 2em auto;
+  border: 2px solid #000;
+  font-size: 2em;
+}
+
+.frame {
+  height: 100%;
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.4);
+}
+
+.header {
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #ffffff;
+  border-bottom: 0.1rem solid rgba(41, 50, 103, 0.1);
+}
+
+.tabButton {
+  margin: 0 1rem;
+  text-transform: uppercase;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  min-width: 3rem;
+}
+
+.tabButton:focus {
+  border: 0.05rem solid #d1d9dc;
+  outline: none;
+}
+
+.activeTabBtn {
+  border: 0.05rem solid #000000;
+}
+
+.showArea {
+  display: flex;
+  width: 100%;
+  height: calc(100% - 3rem);
+}
+
+.showArea > div {
+  flex: 1;
+  min-height: 200px;
+}
+
+.consoleArea {
+  height: 100%;
+  font-size: medium;
+  background-color: #000000;
+}
