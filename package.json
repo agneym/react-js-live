@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack-cli --mode=production --env=prod",
-    "start": "webpack-dev-server --mode=development --env=dev",
+    "start": "webpack-cli --mode=development --env=dev",
     "test": "jest",
     "test:coverage": "jest --coverage"
   },
