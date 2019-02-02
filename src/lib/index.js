@@ -13,11 +13,11 @@ class JSLive extends Component {
     const { snippets, mode } = props;
     const currentTab = {
       left: mode === "js" ? "js" : "html",
-      right: mode === "js" ? "console" : "result",
-    }
+      right: mode === "js" ? "console" : "result"
+    };
     this.state = {
       snippets: snippets,
-      currentTab: currentTab,
+      currentTab: currentTab
     };
   }
   onChangeCode = (code, language) => {
@@ -67,10 +67,10 @@ JSLive.defaultProps = {
   snippets: {
     html: "",
     css: "",
-    js: "",
+    js: ""
   },
-  mode: "js",
-}
+  mode: "js"
+};
 
 JSLive.propTypes = {
   snippets: PropTypes.shape({
@@ -79,6 +79,7 @@ JSLive.propTypes = {
     js: PropTypes.string
   }),
   mode: PropTypes.oneOf(["html", "js"]),
+  theme: PropTypes.any
 };
 
 export default JSLive;

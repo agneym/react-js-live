@@ -31,7 +31,7 @@
 }
 
 .tabButton:focus {
-  border: 0.05rem solid #d1d9dc;
+  border: 0.05rem solid #272a2b;
   outline: none;
 }
 

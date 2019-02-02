@@ -54,13 +54,15 @@ class Editor extends Component {
 
 Editor.defaultProps = {
   language: "js",
-  code: ""
+  code: "",
+  theme
 };
 
 Editor.propTypes = {
   code: PropTypes.string,
   language: PropTypes.oneOf(["html", "css", "js"]),
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  theme: PropTypes.any
 };
 
 export default Editor;
