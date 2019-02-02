@@ -13,10 +13,7 @@ npm install react-js-live
 ```
 
 ```jsx
-<JSLive
-  snippets={snippets}
-  mode="js"
-/>
+<JSLive snippets={snippets} mode="js" />
 ```
 
 ### Props:
@@ -30,23 +27,27 @@ const snippets = {
   html: `<p>HTML Content goes here</p>`,
   css: `.title { color: red; }`,
   js: `alert(js)`
-}
+};
 ```
 
 2. mode
 
-    default: `js`
+   default: `js`
 
-    values: 
-
-    1. `html`: 
+   1. `html`:
       Left tab defaults to HTML and Right defaults to Result
-    2. `js`
+   2. `js`
       Left tab defaults to JS and Right tab to Console.
 
+3. `theme`
+
+
+    default: Night Owl
+
+    Any PrismJS theme.
 
 ## Contributing
 
 1. Clone the repo
-2. `npm install` 
+2. `npm install`
 3. `npm start`
