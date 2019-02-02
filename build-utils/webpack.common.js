@@ -4,11 +4,11 @@ const webpack = require("webpack");
 const config = {
   entry: commonPaths.appSrc,
   output: {
-    filename: "index.js",
+    filename: "js-live.js",
     path: commonPaths.outputPath,
     publicPath: "/",
-    libraryTarget: 'umd',
     library: 'JSLive',
+    libraryTarget: "commonjs2"
   },
   resolve: {
     extensions: [".js", ".jsx"]

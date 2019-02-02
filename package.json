@@ -2,7 +2,7 @@
   "name": "react-js-live",
   "version": "1.0.0",
   "description": "JS Playground",
-  "main": "build/index.js",
+  "main": "build/js-live.js",
   "scripts": {
     "build": "webpack-cli --env=prod",
     "start": "webpack-cli --env=dev",
