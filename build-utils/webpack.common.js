@@ -6,7 +6,9 @@ const config = {
   output: {
     filename: "index.js",
     path: commonPaths.outputPath,
-    publicPath: "/"
+    publicPath: "/",
+    libraryTarget: 'umd',
+    library: 'JSLive',
   },
   resolve: {
     extensions: [".js", ".jsx"]
