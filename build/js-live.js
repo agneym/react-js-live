@@ -7512,7 +7512,7 @@ module.exports = (function(e) {
         let n = e.html;
         return `\n    <!DOCTYPE html>\n    <html lang="en">\n    <head>\n      <meta charset="UTF-8"/>\n      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>\n      <meta http-equiv="X-UA-Compatible" content="ie=edge"/>\n      <title>Document</title>\n      <style>${
           e.css
-        }</style>\n    </head>\n    <body>\n      ${n}\n      <span></span>\n      <script>\n        var _privateLog = console.log;\n        console.log = function(...rest) {\n          if(typeof window !== 'undefined') {\n            window.parent.postMessage({\n              source: frame-${t},\n              message: rest,\n            }, "*");\n          }\n          _privateLog.apply(console, arguments);\n        }\n      <\/script>\n      <script>\n        ${
+        }</style>\n    </head>\n    <body>\n      ${n}\n      <span></span>\n      <script>\n        var _privateLog = console.log;\n        console.log = function(...rest) {\n          if(typeof window !== 'undefined') {\n            window.parent.postMessage({\n              source: "frame-${t}",\n              message: rest,\n            }, "*");\n          }\n          _privateLog.apply(console, arguments);\n        }\n      <\/script>\n      <script>\n        ${
           e.js
         }\n      <\/script>\n    </body>\n    </html>\n  `;
       },

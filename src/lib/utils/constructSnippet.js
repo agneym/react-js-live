@@ -26,7 +26,7 @@ function constructSnippet({ html, css, js }, id) {
         console.log = function(...rest) {
           if(typeof window !== 'undefined') {
             window.parent.postMessage({
-              source: frame-${id},
+              source: "frame-${id}",
               message: rest,
             }, "*");
           }
