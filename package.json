@@ -1,6 +1,6 @@
 {
   "name": "react-js-live",
-  "version": "2.3.2",
+  "version": "2.4.0",
   "description": "JS Playground",
   "main": "build/js-live.js",
   "scripts": {
