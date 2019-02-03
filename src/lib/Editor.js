@@ -11,7 +11,7 @@ const styles = {
   root: {
     boxSizing: "border-box",
     fontFamily: '"Dank Mono", "Fira Code", monospace',
-    height: "100%",
+    height: "calc(100% - 3rem)",
     ...theme.plain
   }
 };

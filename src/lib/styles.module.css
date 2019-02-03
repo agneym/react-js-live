@@ -50,7 +50,7 @@
 }
 
 .consoleArea {
-  height: 100%;
+  height: calc(100% - 3rem);
   font-size: medium;
   background-color: #000000;
   padding: 1rem 0;
