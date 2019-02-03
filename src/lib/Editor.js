@@ -58,10 +58,10 @@ class Editor extends Component {
   );
 
   render() {
-    const { code, onChangeTab } = this.props;
+    const { code, language, onChangeTab } = this.props;
     return (
       <div className={style.editorArea}>
-        <Header tabs={this.snippets} onChange={onChangeTab} />
+        <Header tabs={this.snippets} active={language} onChange={onChangeTab} />
         <SimpleEditor
           value={code}
           onValueChange={this.onValueChange}

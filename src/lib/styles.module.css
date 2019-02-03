@@ -10,6 +10,17 @@
   flex: 1;
 }
 
+@media only screen and (max-width: 600px) {
+  .frame {
+    flex-direction: column;
+  }
+  .resultArea,
+  .editorArea {
+    min-height: 200px;
+    background-color: #000000;
+  }
+}
+
 .header {
   height: 3rem;
   display: flex;
@@ -26,6 +37,7 @@
   padding: 0.5rem 1rem;
   cursor: pointer;
   min-width: 3rem;
+  background-color: transparent;
 }
 
 .tabButton:focus {

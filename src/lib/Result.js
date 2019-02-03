@@ -11,12 +11,12 @@ class Result extends Component {
   };
   tabs = [
     {
-      label: "Console",
-      value: "console"
-    },
-    {
       label: "Result",
       value: "result"
+    },
+    {
+      label: "Console",
+      value: "console"
     }
   ];
   componentDidMount() {
@@ -48,7 +48,7 @@ class Result extends Component {
     const { id, active, code, onChangeTab } = this.props;
     return (
       <div className={styles.resultArea}>
-        <Header tabs={this.tabs} onChangeTab={onChangeTab} />
+        <Header tabs={this.tabs} active={active} onChangeTab={onChangeTab} />
         <iframe
           height="100%"
           width="100%"
