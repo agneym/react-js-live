@@ -8,20 +8,28 @@ afterEach(cleanup);
 describe("Header", () => {
   it("should fire click actions", () => {
     const onClick = jest.fn(() => {});
-    const { getByText } = render(<Header onChange={onClick} />);
-    const JSBtn = getByText("JS");
-    const ConsoleBtn = getByText("Console");
-    fireEvent.click(JSBtn);
-    fireEvent.click(ConsoleBtn);
-    expect(onClick.mock.calls.length).toBe(2);
+    const { getByText } = render(
+      <Header
+        active={null}
+        tabs={[{ label: "test", value: "test" }]}
+        onChange={onClick}
+      />
+    );
+    const testBtn = getByText("test");
+    fireEvent.click(testBtn);
+    expect(onClick.mock.calls.length).toBe(1);
   });
 
-  it("should marks active", () => {
+  it("should mark active", () => {
     const onClick = () => {};
     const { getByText } = render(
-      <Header activeCode="html" onChange={onClick} />
+      <Header
+        active="html"
+        tabs={[{ label: "html", value: "html" }]}
+        onChange={onClick}
+      />
     );
-    const HTMLBtn = getByText("HTML");
+    const HTMLBtn = getByText("html");
     expect(HTMLBtn.classList.contains("activeTabBtn")).toBeTruthy();
   });
 });
