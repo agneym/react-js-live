@@ -1,13 +1,24 @@
-import React, { Fragment, Component } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import Console from "./Console";
 import styles from "./styles.module.css";
+import Header from "./Header";
 
 class Result extends Component {
   state = {
     logs: []
   };
+  tabs = [
+    {
+      label: "Console",
+      value: "console"
+    },
+    {
+      label: "Result",
+      value: "result"
+    }
+  ];
   componentDidMount() {
     if (typeof window !== "undefined") {
       const { id } = this.props;
@@ -34,9 +45,10 @@ class Result extends Component {
     }
   };
   render() {
-    const { id, active, code } = this.props;
+    const { id, active, code, onChangeTab } = this.props;
     return (
       <div className={styles.resultArea}>
+        <Header tabs={this.tabs} onChangeTab={onChangeTab} />
         <iframe
           height="100%"
           width="100%"
@@ -65,7 +77,8 @@ Result.defaultProps = {
 Result.propTypes = {
   active: PropTypes.oneOf(["result", "console"]),
   code: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  onChangeTab: PropTypes.func.isRequired
 };
 
 export default Result;

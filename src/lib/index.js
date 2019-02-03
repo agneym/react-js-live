@@ -58,8 +58,14 @@ class JSLive extends Component {
           language={currentTab.left}
           code={snippets[currentTab.left]}
           onChange={this.onChangeCode}
+          onChangeTab={this.onChangeTab}
         />
-        <Result id={id} active={currentTab.right} code={codeSnippet} />
+        <Result
+          id={id}
+          active={currentTab.right}
+          code={codeSnippet}
+          onChangeTab={this.onChangeTab}
+        />
       </div>
     );
   }

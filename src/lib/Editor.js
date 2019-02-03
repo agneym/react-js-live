@@ -4,6 +4,7 @@ import SimpleEditor from "react-simple-code-editor";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/nightOwl";
 
+import Header from "./Header";
 import style from "./styles.module.css";
 
 const styles = {
@@ -16,6 +17,21 @@ const styles = {
 };
 
 class Editor extends Component {
+  snippets = [
+    {
+      label: "HTML",
+      value: "html"
+    },
+    {
+      label: "CSS",
+      value: "css"
+    },
+    {
+      label: "JS",
+      value: "js"
+    }
+  ];
+
   onValueChange = code => {
     this.props.onChange(code, this.props.language);
   };
@@ -42,10 +58,12 @@ class Editor extends Component {
   );
 
   render() {
+    const { code, onChangeTab } = this.props;
     return (
       <div className={style.editorArea}>
+        <Header tabs={this.snippets} onChange={onChangeTab} />
         <SimpleEditor
-          value={this.props.code}
+          value={code}
           onValueChange={this.onValueChange}
           highlight={this.highlight}
           padding={10}
@@ -66,6 +84,7 @@ Editor.propTypes = {
   code: PropTypes.string,
   language: PropTypes.oneOf(["html", "css", "js"]),
   onChange: PropTypes.func.isRequired,
+  onChangeTab: PropTypes.func.isRequired,
   theme: PropTypes.any
 };
 
