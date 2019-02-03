@@ -20,6 +20,9 @@ class Result extends Component {
     }
   ];
   componentDidMount() {
+    this.waitForMessage();
+  }
+  waitForMessage = () => {
     if (typeof window !== "undefined") {
       const { id } = this.props;
       window.addEventListener("message", data => {
@@ -30,7 +33,11 @@ class Result extends Component {
         }
       });
     }
-  }
+  };
+  onChangeResultTabs = event => {
+    const value = event.target.value;
+    this.props.onChangeTab(value, "right");
+  };
   frameStyling = () => {
     const { active } = this.props;
     if (active === "console") {
@@ -45,10 +52,14 @@ class Result extends Component {
     }
   };
   render() {
-    const { id, active, code, onChangeTab } = this.props;
+    const { id, active, code } = this.props;
     return (
       <div className={styles.resultArea}>
-        <Header tabs={this.tabs} active={active} onChangeTab={onChangeTab} />
+        <Header
+          tabs={this.tabs}
+          active={active}
+          onChange={this.onChangeResultTabs}
+        />
         <iframe
           height="100%"
           width="100%"

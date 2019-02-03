@@ -5,16 +5,8 @@ import TabButton from "./TabButton";
 import styles from "./styles.module.css";
 
 class Header extends React.Component {
-  onChangeCodeTabs = event => {
-    const value = event.target.value;
-    this.props.onChange(value, "left");
-  };
-  onChangeResultTabs = event => {
-    const value = event.target.value;
-    this.props.onChange(value, "right");
-  };
   render() {
-    const { tabs, active } = this.props;
+    const { tabs, active, onChange } = this.props;
     return (
       <div className={styles.header}>
         {tabs.map(tab => (
@@ -22,7 +14,7 @@ class Header extends React.Component {
             key={tab.value}
             value={tab.value}
             active={tab.value === active}
-            onClick={this.onChangeCodeTabs}
+            onClick={onChange}
           >
             {tab.label}
           </TabButton>
