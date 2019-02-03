@@ -1,13 +1,28 @@
-import React, { Fragment, Component } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import Console from "./Console";
+import styles from "./styles.module.css";
+import Header from "./Header";
 
 class Result extends Component {
   state = {
     logs: []
   };
+  tabs = [
+    {
+      label: "Result",
+      value: "result"
+    },
+    {
+      label: "Console",
+      value: "console"
+    }
+  ];
   componentDidMount() {
+    this.waitForMessage();
+  }
+  waitForMessage = () => {
     if (typeof window !== "undefined") {
       const { id } = this.props;
       window.addEventListener("message", data => {
@@ -18,7 +33,11 @@ class Result extends Component {
         }
       });
     }
-  }
+  };
+  onChangeResultTabs = event => {
+    const value = event.target.value;
+    this.props.onChangeTab(value, "right");
+  };
   frameStyling = () => {
     const { active } = this.props;
     if (active === "console") {
@@ -35,7 +54,12 @@ class Result extends Component {
   render() {
     const { id, active, code } = this.props;
     return (
-      <Fragment>
+      <div className={styles.resultArea}>
+        <Header
+          tabs={this.tabs}
+          active={active}
+          onChange={this.onChangeResultTabs}
+        />
         <iframe
           height="100%"
           width="100%"
@@ -45,7 +69,7 @@ class Result extends Component {
           style={this.frameStyling()}
         />
         {active === "console" && <Console logs={this.state.logs} />}
-      </Fragment>
+      </div>
     );
   }
   componentDidUpdate(prevProps) {
@@ -64,7 +88,8 @@ Result.defaultProps = {
 Result.propTypes = {
   active: PropTypes.oneOf(["result", "console"]),
   code: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  onChangeTab: PropTypes.func.isRequired
 };
 
 export default Result;

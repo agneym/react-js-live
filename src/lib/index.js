@@ -17,9 +17,21 @@ class JSLive extends Component {
     };
     this.state = {
       snippets: snippets,
-      currentTab: currentTab
+      currentTab: currentTab,
+      isMobile: true
     };
   }
+  componentDidMount() {
+    this.checkIfMobile();
+  }
+  checkIfMobile = () => {
+    const screenWidthQuery = window.matchMedia("(min-width: 600px)");
+    if (screenWidthQuery.matches) {
+      this.setState({
+        isMobile: false
+      });
+    }
+  };
   onChangeCode = (code, language) => {
     this.setState(prevState => ({
       snippets: {
@@ -38,27 +50,22 @@ class JSLive extends Component {
   };
   render() {
     const { id } = this.props;
-    const { snippets, currentTab } = this.state;
+    const { snippets, currentTab, isMobile } = this.state;
     const codeSnippet = constructSnippets(snippets, id);
     return (
       <div className={styles.frame}>
-        <Header
-          activeCode={currentTab.left}
-          activeRes={currentTab.right}
-          onChange={this.onChangeTab}
+        <Editor
+          language={currentTab.left}
+          code={snippets[currentTab.left]}
+          onChange={this.onChangeCode}
+          onChangeTab={this.onChangeTab}
         />
-        <div className={styles.showArea}>
-          <div>
-            <Editor
-              language={currentTab.left}
-              code={snippets[currentTab.left]}
-              onChange={this.onChangeCode}
-            />
-          </div>
-          <div>
-            <Result id={id} active={currentTab.right} code={codeSnippet} />
-          </div>
-        </div>
+        <Result
+          id={id}
+          active={currentTab.right}
+          code={codeSnippet}
+          onChangeTab={this.onChangeTab}
+        />
       </div>
     );
   }

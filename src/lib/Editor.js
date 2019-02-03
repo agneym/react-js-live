@@ -4,18 +4,41 @@ import SimpleEditor from "react-simple-code-editor";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/nightOwl";
 
+import Header from "./Header";
+import style from "./styles.module.css";
+
 const styles = {
   root: {
     boxSizing: "border-box",
     fontFamily: '"Dank Mono", "Fira Code", monospace',
-    height: "100%",
+    height: "calc(100% - 3rem)",
     ...theme.plain
   }
 };
 
 class Editor extends Component {
+  snippets = [
+    {
+      label: "HTML",
+      value: "html"
+    },
+    {
+      label: "CSS",
+      value: "css"
+    },
+    {
+      label: "JS",
+      value: "js"
+    }
+  ];
+
   onValueChange = code => {
     this.props.onChange(code, this.props.language);
+  };
+
+  onChangeCodeTabs = event => {
+    const value = event.target.value;
+    this.props.onChangeTab(value, "left");
   };
 
   highlight = code => (
@@ -40,14 +63,22 @@ class Editor extends Component {
   );
 
   render() {
+    const { code, language } = this.props;
     return (
-      <SimpleEditor
-        value={this.props.code}
-        onValueChange={this.onValueChange}
-        highlight={this.highlight}
-        padding={10}
-        style={styles.root}
-      />
+      <div className={style.editorArea}>
+        <Header
+          tabs={this.snippets}
+          active={language}
+          onChange={this.onChangeCodeTabs}
+        />
+        <SimpleEditor
+          value={code}
+          onValueChange={this.onValueChange}
+          highlight={this.highlight}
+          padding={10}
+          style={styles.root}
+        />
+      </div>
     );
   }
 }
@@ -62,6 +93,7 @@ Editor.propTypes = {
   code: PropTypes.string,
   language: PropTypes.oneOf(["html", "css", "js"]),
   onChange: PropTypes.func.isRequired,
+  onChangeTab: PropTypes.func.isRequired,
   theme: PropTypes.any
 };
 

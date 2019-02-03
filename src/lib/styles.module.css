@@ -1,15 +1,24 @@
-/* add css styles here (optional) */
-
-.test {
-  display: inline-block;
-  margin: 2em auto;
-  border: 2px solid #000;
-  font-size: 2em;
+.frame {
+  min-height: 250px;
+  height: 100%;
+  display: flex;
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.4);
 }
 
-.frame {
-  height: 100%;
-  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.4);
+.resultArea,
+.editorArea {
+  flex: 1;
+}
+
+@media only screen and (max-width: 600px) {
+  .frame {
+    flex-direction: column;
+  }
+  .resultArea,
+  .editorArea {
+    min-height: 200px;
+    background-color: #000000;
+  }
 }
 
 .header {
@@ -28,6 +37,7 @@
   padding: 0.5rem 1rem;
   cursor: pointer;
   min-width: 3rem;
+  background-color: transparent;
 }
 
 .tabButton:focus {
@@ -39,20 +49,8 @@
   border: 0.05rem solid #000000;
 }
 
-.showArea {
-  display: flex;
-  width: 100%;
-  height: calc(100% - 3rem);
-  overflow-y: auto;
-}
-
-.showArea > div {
-  flex: 1;
-  min-height: 200px;
-}
-
 .consoleArea {
-  height: 100%;
+  height: calc(100% - 3rem);
   font-size: medium;
   background-color: #000000;
   padding: 1rem 0;
