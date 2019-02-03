@@ -37,8 +37,9 @@ class JSLive extends Component {
     }));
   };
   render() {
+    const { id } = this.props;
     const { snippets, currentTab } = this.state;
-    const codeSnippet = constructSnippets(snippets);
+    const codeSnippet = constructSnippets(snippets, id);
     return (
       <div className={styles.frame}>
         <Header
@@ -55,7 +56,7 @@ class JSLive extends Component {
             />
           </div>
           <div>
-            <Result active={currentTab.right} code={codeSnippet} />
+            <Result id={id} active={currentTab.right} code={codeSnippet} />
           </div>
         </div>
       </div>
@@ -79,7 +80,8 @@ JSLive.propTypes = {
     js: PropTypes.string
   }),
   mode: PropTypes.oneOf(["html", "js"]),
-  theme: PropTypes.any
+  theme: PropTypes.any,
+  id: PropTypes.string.isRequired
 };
 
 export default JSLive;

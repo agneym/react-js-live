@@ -4,6 +4,7 @@
  * @param {string} snippet.html
  * @param {string} snippet.css
  * @param {string} snippet.js
+ * @param {string} id - unique ID for message propagation
  * @returns {string}
  */
 function constructSnippet({ html, css, js }) {
@@ -25,7 +26,7 @@ function constructSnippet({ html, css, js }) {
         console.log = function(...rest) {
           if(typeof window !== 'undefined') {
             window.parent.postMessage({
-              source: "iframe",
+              source: frame-${id},
               message: rest,
             }, "*");
           }

@@ -18,13 +18,17 @@ import JSLive from "react-js-live";
 import "react-js-live/build/main.css";
 
 function App() {
-  return <JSLive snippets={snippets} mode="js" />;
+  return <JSLive id="test" snippets={snippets} mode="js" />;
 }
 ```
 
 ### Props:
 
-1. snippets
+1. `id`
+
+A string that uniquely identifies the frame on the page.
+
+2. snippets
 
 Object containing keys: `html`, `css` and `js`. This is the initial code passed into the component.
 
@@ -36,7 +40,7 @@ const snippets = {
 };
 ```
 
-2. mode
+3. mode
 
    default: `js`
 
@@ -45,7 +49,7 @@ const snippets = {
    2. `js`
       Left tab defaults to JS and Right tab to Console.
 
-3. `theme`
+4. `theme`
 
 
     default: Night Owl

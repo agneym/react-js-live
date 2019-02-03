@@ -5,14 +5,15 @@ import Console from "./Console";
 
 class Result extends Component {
   state = {
-    logs: [],
-  }
+    logs: []
+  };
   componentDidMount() {
-    if(typeof window !== "undefined") {
-      window.addEventListener("message", (data) => {
-        if (data.data.source === "iframe") {
+    if (typeof window !== "undefined") {
+      const { id } = this.props;
+      window.addEventListener("message", data => {
+        if (data.data.source === `frame-${id}`) {
           this.setState(prevState => ({
-            logs: [...prevState.logs, ...data.data.message],
+            logs: [...prevState.logs, ...data.data.message]
           }));
         }
       });
@@ -20,53 +21,50 @@ class Result extends Component {
   }
   frameStyling = () => {
     const { active } = this.props;
-    if(active === "console") {
+    if (active === "console") {
       return {
         position: "absolute",
         opacity: 0,
         top: -1024,
-        left: -1024,
-      }
+        left: -1024
+      };
     } else {
-      return {
-
-      }
+      return {};
     }
-  }
+  };
   render() {
-    const { active, code } = this.props;
+    const { id, active, code } = this.props;
     return (
       <Fragment>
         <iframe
           height="100%"
           width="100%"
-          title="result"
+          title={id}
           frameBorder="0"
           srcDoc={code}
           style={this.frameStyling()}
         />
-        {active === "console" && (
-          <Console logs={this.state.logs} />
-        )}
+        {active === "console" && <Console logs={this.state.logs} />}
       </Fragment>
     );
   }
   componentDidUpdate(prevProps) {
-    if(prevProps.code!==this.props.code) {
+    if (prevProps.code !== this.props.code) {
       this.setState({
-        logs: [],
+        logs: []
       });
     }
   }
 }
 
 Result.defaultProps = {
-  active: "result",
-}
+  active: "result"
+};
 
 Result.propTypes = {
   active: PropTypes.oneOf(["result", "console"]),
-  code: PropTypes.string.isRequired
+  code: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired
 };
 
 export default Result;
