@@ -7,7 +7,8 @@
     "build": "webpack-cli --env=prod",
     "start": "webpack-cli --env=dev",
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "release": "np"
   },
   "keywords": [
     "react",
@@ -47,6 +48,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.0.0",
     "mini-css-extract-plugin": "^0.5.0",
+    "np": "^4.0.2",
     "prettier": "^1.16.3",
     "pretty-quick": "^1.10.0",
     "react-test-renderer": "^16.7.0",
