@@ -2,6 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/react-js-live.svg)](https://badge.fury.io/js/react-js-live)
 [![Build Status](https://travis-ci.org/BoyWithSilverWings/react-js-live.svg?branch=master)](https://travis-ci.org/BoyWithSilverWings/react-js-live)
+![Prettier](https://img.shields.io/badge/styled%20with-prettier-ff69b4.svg?style=flat-square)
 
 A React Component for live rendering and editing of HTML, CSS and JS.
 
