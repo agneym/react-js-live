@@ -4,6 +4,8 @@ import SimpleEditor from "react-simple-code-editor";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/nightOwl";
 
+import style from "./styles.module.css";
+
 const styles = {
   root: {
     boxSizing: "border-box",
@@ -41,13 +43,15 @@ class Editor extends Component {
 
   render() {
     return (
-      <SimpleEditor
-        value={this.props.code}
-        onValueChange={this.onValueChange}
-        highlight={this.highlight}
-        padding={10}
-        style={styles.root}
-      />
+      <div className={style.editorArea}>
+        <SimpleEditor
+          value={this.props.code}
+          onValueChange={this.onValueChange}
+          highlight={this.highlight}
+          padding={10}
+          style={styles.root}
+        />
+      </div>
     );
   }
 }

@@ -2,6 +2,7 @@ import React, { Fragment, Component } from "react";
 import PropTypes from "prop-types";
 
 import Console from "./Console";
+import styles from "./styles.module.css";
 
 class Result extends Component {
   state = {
@@ -35,7 +36,7 @@ class Result extends Component {
   render() {
     const { id, active, code } = this.props;
     return (
-      <Fragment>
+      <div className={styles.resultArea}>
         <iframe
           height="100%"
           width="100%"
@@ -45,7 +46,7 @@ class Result extends Component {
           style={this.frameStyling()}
         />
         {active === "console" && <Console logs={this.state.logs} />}
-      </Fragment>
+      </div>
     );
   }
   componentDidUpdate(prevProps) {
