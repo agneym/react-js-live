@@ -7508,11 +7508,13 @@ module.exports = (function(e) {
         theme: d.a.any
       });
     var P = j;
-    var M = function(e) {
-        let t = e.html,
-          n = e.css,
-          r = e.js;
-        return `\n    <!DOCTYPE html>\n    <html lang="en">\n    <head>\n      <meta charset="UTF-8"/>\n      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>\n      <meta http-equiv="X-UA-Compatible" content="ie=edge"/>\n      <title>Document</title>\n      <style>${n}</style>\n    </head>\n    <body>\n      ${t}\n      <span></span>\n      <script>\n        var _privateLog = console.log;\n        console.log = function(...rest) {\n          if(typeof window !== 'undefined') {\n            window.parent.postMessage({\n              source: frame-${id},\n              message: rest,\n            }, "*");\n          }\n          _privateLog.apply(console, arguments);\n        }\n      <\/script>\n      <script>\n        ${r}\n      <\/script>\n    </body>\n    </html>\n  `;
+    var M = function(e, t) {
+        let n = e.html;
+        return `\n    <!DOCTYPE html>\n    <html lang="en">\n    <head>\n      <meta charset="UTF-8"/>\n      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>\n      <meta http-equiv="X-UA-Compatible" content="ie=edge"/>\n      <title>Document</title>\n      <style>${
+          e.css
+        }</style>\n    </head>\n    <body>\n      ${n}\n      <span></span>\n      <script>\n        var _privateLog = console.log;\n        console.log = function(...rest) {\n          if(typeof window !== 'undefined') {\n            window.parent.postMessage({\n              source: frame-${t},\n              message: rest,\n            }, "*");\n          }\n          _privateLog.apply(console, arguments);\n        }\n      <\/script>\n      <script>\n        ${
+          e.js
+        }\n      <\/script>\n    </body>\n    </html>\n  `;
       },
       D = n(96),
       B = n.n(D);

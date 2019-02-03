@@ -7,7 +7,7 @@
  * @param {string} id - unique ID for message propagation
  * @returns {string}
  */
-function constructSnippet({ html, css, js }) {
+function constructSnippet({ html, css, js }, id) {
   return `
     <!DOCTYPE html>
     <html lang="en">
