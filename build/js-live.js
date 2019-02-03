@@ -7509,12 +7509,10 @@ module.exports = (function(e) {
       });
     var P = j;
     var M = function(e) {
-        let t = e.html;
-        return `\n    <!DOCTYPE html>\n    <html lang="en">\n    <head>\n      <meta charset="UTF-8"/>\n      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>\n      <meta http-equiv="X-UA-Compatible" content="ie=edge"/>\n      <title>Document</title>\n      <style>${
-          e.css
-        }</style>\n    </head>\n    <body>\n      ${t}\n      <span></span>\n      <script>\n        var _privateLog = console.log;\n        console.log = function(...rest) {\n          if(typeof window !== 'undefined') {\n            window.parent.postMessage({\n              source: "iframe",\n              message: rest,\n            }, "*");\n          }\n          _privateLog.apply(console, arguments);\n        }\n      <\/script>\n      <script>\n        ${
-          e.js
-        }\n      <\/script>\n    </body>\n    </html>\n  `;
+        let t = e.html,
+          n = e.css,
+          r = e.js;
+        return `\n    <!DOCTYPE html>\n    <html lang="en">\n    <head>\n      <meta charset="UTF-8"/>\n      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>\n      <meta http-equiv="X-UA-Compatible" content="ie=edge"/>\n      <title>Document</title>\n      <style>${n}</style>\n    </head>\n    <body>\n      ${t}\n      <span></span>\n      <script>\n        var _privateLog = console.log;\n        console.log = function(...rest) {\n          if(typeof window !== 'undefined') {\n            window.parent.postMessage({\n              source: frame-${id},\n              message: rest,\n            }, "*");\n          }\n          _privateLog.apply(console, arguments);\n        }\n      <\/script>\n      <script>\n        ${r}\n      <\/script>\n    </body>\n    </html>\n  `;
       },
       D = n(96),
       B = n.n(D);
@@ -7735,28 +7733,31 @@ module.exports = (function(e) {
           });
       }
       componentDidMount() {
-        "undefined" != typeof window &&
-          window.addEventListener("message", e => {
-            "iframe" === e.data.source &&
-              this.setState(t => ({ logs: [...t.logs, ...e.data.message] }));
+        if ("undefined" != typeof window) {
+          const e = this.props.id;
+          window.addEventListener("message", t => {
+            t.data.source === `frame-${e}` &&
+              this.setState(e => ({ logs: [...e.logs, ...t.data.message] }));
           });
+        }
       }
       render() {
         const e = this.props,
-          t = e.active,
-          n = e.code;
+          t = e.id,
+          n = e.active,
+          r = e.code;
         return u.a.createElement(
           l.Fragment,
           null,
           u.a.createElement("iframe", {
             height: "100%",
             width: "100%",
-            title: "result",
+            title: t,
             frameBorder: "0",
-            srcDoc: n,
+            srcDoc: r,
             style: this.frameStyling()
           }),
-          "console" === t && u.a.createElement(X, { logs: this.state.logs })
+          "console" === n && u.a.createElement(X, { logs: this.state.logs })
         );
       }
       componentDidUpdate(e) {
@@ -7766,7 +7767,8 @@ module.exports = (function(e) {
     (Q.defaultProps = { active: "result" }),
       (Q.propTypes = {
         active: d.a.oneOf(["result", "console"]),
-        code: d.a.string.isRequired
+        code: d.a.string.isRequired,
+        id: d.a.string.isRequired
       });
     var ee = Q;
     function te(e) {
@@ -7818,16 +7820,17 @@ module.exports = (function(e) {
         this.state = { snippets: t, currentTab: r };
       }
       render() {
-        const e = this.state,
-          t = e.snippets,
-          n = e.currentTab,
-          r = M(t);
+        const e = this.props.id,
+          t = this.state,
+          n = t.snippets,
+          r = t.currentTab,
+          a = M(n, e);
         return u.a.createElement(
           "div",
           { className: f.a.frame },
           u.a.createElement(V, {
-            activeCode: n.left,
-            activeRes: n.right,
+            activeCode: r.left,
+            activeRes: r.right,
             onChange: this.onChangeTab
           }),
           u.a.createElement(
@@ -7837,15 +7840,15 @@ module.exports = (function(e) {
               "div",
               null,
               u.a.createElement(P, {
-                language: n.left,
-                code: t[n.left],
+                language: r.left,
+                code: n[r.left],
                 onChange: this.onChangeCode
               })
             ),
             u.a.createElement(
               "div",
               null,
-              u.a.createElement(ee, { active: n.right, code: r })
+              u.a.createElement(ee, { id: e, active: r.right, code: a })
             )
           )
         );
@@ -7859,7 +7862,8 @@ module.exports = (function(e) {
           js: d.a.string
         }),
         mode: d.a.oneOf(["html", "js"]),
-        theme: d.a.any
+        theme: d.a.any,
+        id: d.a.string.isRequired
       });
     t.default = re;
   }
