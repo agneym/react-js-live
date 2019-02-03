@@ -1,6 +1,7 @@
 ## JS Live
 
 [![npm version](https://badge.fury.io/js/react-js-live.svg)](https://badge.fury.io/js/react-js-live)
+[![Build Status](https://travis-ci.org/BoyWithSilverWings/react-js-live.svg?branch=master)](https://travis-ci.org/BoyWithSilverWings/react-js-live)
 
 A React Component for live rendering and editing of HTML, CSS and JS.
 
