@@ -1,4 +1,6 @@
-## JS Live
+> Depreacted. Succeeded by [Playground](https://github.com/agneym/playground)
+
+# JS Live
 
 [![npm version](https://badge.fury.io/js/react-js-live.svg)](https://badge.fury.io/js/react-js-live)
 [![Build Status](https://travis-ci.org/BoyWithSilverWings/react-js-live.svg?branch=master)](https://travis-ci.org/BoyWithSilverWings/react-js-live)
