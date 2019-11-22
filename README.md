@@ -1,4 +1,4 @@
-> Depreacted. Succeeded by [Playground](https://github.com/agneym/playground)
+> Deprecated. Succeeded by [Playground](https://github.com/agneym/playground)
 
 # JS Live
 
